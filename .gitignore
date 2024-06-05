@@ -1,0 +1,14 @@
+saymakenv
+.env
+.terraform*
+terraform*
+
+iac
+
+__pycache__
+
+producer.py
+sample.py
+
+*.json
+server_start.sh

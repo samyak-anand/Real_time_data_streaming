@@ -1,0 +1,9 @@
+requests
+confluent-kafka==1.9.2
+pyspark==3.5.0
+# dask 
+# distributed
+cassandra-driver==3.29.1
+apache-airflow-providers-apache-spark
+apache-airflow-providers-apache-kafka==1.4.1
+kafka-python==2.0.2
