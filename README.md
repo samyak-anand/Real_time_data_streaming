@@ -5,7 +5,7 @@
 This project aims to demonstrate real-time data streaming using Apache Kafka and Apache Spark. It includes components for generating sample data, producing it to Kafka, and processing it using Spark Streaming. Docker is utilized for containerization, making deployment easier across different environments.
 
 ## Directory:
-Real-Time_Data_Streaming_Project/
+Real-time_data_streaming
 
 ## Real-time streaming data architecture:
 │
@@ -52,11 +52,23 @@ To clone this repository, open terminal, type the following command:
 ```bash
 git clone https://github.com/samyak-anand/Real_time_data_streaming.git
 ```
+
 ## Navigate to Project Directory:
 Change directory to Real_time_data_streaming, by using the following command.
-      ```bash
-      cd Real_time_data_streaming
-      ```
+```bash
+cd Real_time_data_streaming
+```
+
+## Set Environment Variables:
+Ensure that necessary environment variables are configured in the .env file.
+
+## Verify the Date:
+verify the start_date and end_date in [utils.py](dags/utils.py)  file present in dags folder, define under #Data Range Variables
+```bash
+# Date Range variables
+start_date = Variable.get("start_date", "2024-01-01")
+end_date = Variable.get("end_date", "2024-05-28")
+```
 
 ## Introduction:
 This is a data processing pipeline which ingests data (weather data) from an endpoint and drops it in Apache Kafka. Then Apache Spark is used to process the data and stored in Apache Cassandra. The entire pipeline is orchestrated using Apache Airflow with the help of Kafka and Spark providers. Due to the fact that data is available in hourly and daily batches, rather than building a streaming pipeline, this is a batch processing pipeline. This solution can also be used for streaming in which case the batch processing in Spark is tweaked to satisfy the streaming solution but the spark triggers have to be handled in a custom fashion. 
