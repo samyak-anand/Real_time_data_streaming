@@ -176,3 +176,32 @@ File Path                           PID    Runtime      # DAGs    # Errors  Last
 /opt/airflow/dags/main.py                                    1           0  0.44s           2024-06-06T12:36:57
 /opt/airflow/dags/historic_main.py                           1           0  0.43s           2024-06-06T12:36:57
 ================================================================================
+[2024-06-06T12:37:49.000+0000] {manager.py:878} INFO - 
+================================================================================
+DAG File Processing Stats
+
+File Path                           PID    Runtime      # DAGs    # Errors  Last Runtime    Last Run
+----------------------------------  -----  ---------  --------  ----------  --------------  -------------------
+/opt/airflow/dags/main.py                                    1           0  0.70s           2024-06-06T12:37:27
+/opt/airflow/dags/historic_main.py                           1           0  0.70s           2024-06-06T12:37:27
+================================================================================
+[2024-06-06T12:38:14.919+0000] {manager.py:737} INFO - Searching for files in /opt/airflow/dags
+[2024-06-06T12:38:14.922+0000] {manager.py:740} INFO - There are 2 files in /opt/airflow/dags
+[2024-06-06T12:38:19.971+0000] {manager.py:878} INFO - 
+================================================================================
+DAG File Processing Stats
+
+File Path                           PID    Runtime      # DAGs    # Errors  Last Runtime    Last Run
+----------------------------------  -----  ---------  --------  ----------  --------------  -------------------
+/opt/airflow/dags/main.py                                    1           0  0.75s           2024-06-06T12:37:58
+/opt/airflow/dags/historic_main.py                           1           0  0.71s           2024-06-06T12:37:58
+================================================================================
+[2024-06-06T12:38:50.172+0000] {manager.py:878} INFO - 
+================================================================================
+DAG File Processing Stats
+
+File Path                           PID    Runtime      # DAGs    # Errors  Last Runtime    Last Run
+----------------------------------  -----  ---------  --------  ----------  --------------  -------------------
+/opt/airflow/dags/main.py                                    1           0  0.20s           2024-06-06T12:38:29
+/opt/airflow/dags/historic_main.py                           1           0  0.20s           2024-06-06T12:38:29
+================================================================================
