@@ -1,6 +1,8 @@
-**#Overview:**
+#Overview:
 
-**# Data Streaming Pipeline:**
+This project aims to demonstrate real-time data streaming using Apache Kafka and Apache Spark. It includes components for generating sample data, producing it to Kafka, and processing it using Spark Streaming. Docker is utilized for containerization, making deployment easier across different environments.
+
+# Data Streaming Pipeline:
 
 Real-Time_Data_Streaming_Project/
 
