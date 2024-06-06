@@ -1,8 +1,15 @@
+"""
+Connects to a Cassandra database and retrieves temperature data.
+Converts the data into a Pandas DataFrame.
+Analyzes the temperature data by resampling it to hourly averages.
+Visualizes the temperature data over time for each geographical location.
+"""
+
 from cassandra.cluster import Cluster
 import pandas as pd
 import matplotlib.pyplot as plt
 import seaborn as sns
-# analysis.py
+
 import logging
 import pandas as pd
 from cassandra.cluster import Cluster
