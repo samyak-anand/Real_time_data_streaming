@@ -68,6 +68,20 @@ daily = Variable.get("daily", default_var="weather_code")
 start_date = Variable.get("start_date", "2024-04-01")
 end_date = Variable.get("end_date", "2024-05-28")
 ```
+## Data Structure
+Parameter	Data Type 	Description
+latitude	Float	Geographical WGS84 coordinates of the location. Multiple coordinates can be comma separated. E.g. &latitude=52.52,48.85&longitude=13.41,2.35. To return data for multiple locations the JSON output changes to a list of structures. CSV and XLSX formats add a column location_id.
+longitude	Float	
+start_date	DateTime	The time interval to get weather data. A day must be specified as an ISO8601 date (e.g. 2022-12-31).
+end_date	DateTime	The time interval to get weather data. A day must be specified as an ISO8601 date (e.g. 2022-12-31).
+temperature_2m	Float	Air temperature at 2 meters above ground
+relative_humidity_2m	Float	Relative humidity at 2 meters above ground
+dew_point_2m	Float	Dew point temperature at 2 meters above ground
+apparent_temperature	Float	Apparent temperature is the perceived feels-like temperature combining wind chill factor, relative humidity and solar radiation
+surface_pressure	Float	Atmospheric air pressure reduced to mean sea level (msl) or pressure at surface. Typically pressure on mean sea level is used in meteorology. Surface pressure gets lower with increasing elevation.
+precipitation	Float	Total precipitation (rain, showers, snow) sum of the preceding hour. Data is stored with a 0.1 mm precision. If precipitation data is summed up to monthly sums, there might be small inconsistencies with the total precipitation amount.
+rain	Float	Only liquid precipitation of the preceding hour including local showers and rain from large scale systems.
+![image](https://github.com/samyak-anand/Real_time_data_streaming/assets/107413662/de7f6088-c7e7-4ec2-a6eb-f69e7ba1878f)
 
 
 ## Clone Repository: 
