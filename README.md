@@ -1,25 +1,44 @@
 # Data Streaming Pipeline
 
 Real-Time_Data_Streaming_Project/
+
 │
+
 ├── dags/ # Contains Python scripts for data generation(historic_main.py), Kafka producing(main_py), logging configuration(utils.py),Spark streaming(spark_stream_daily.py and spark_stream_hourly.py).
+
 │ ├── historic_main.py# Python script for generating sample data, it include the airflow variables, data range             variables .
+
 │ ├──> main_py # Python script for producing data to Kafka.
+
 │ ├──> utils.py # Configuration file for logging.
+
 │ └──> sspark_stream_daily.py # Python script for processing data using Spark Streaming for daily stream data.
+
 │ └──> spark_stream_hourly.py # Python script for processing data using Spark Streaming for hourly stream data.
+
 ├── logs/ # Holds the logs file.
+
 │ └── dag_processor_manager
+
 │ └── scheduler
+
 ├── scripts/ # Includes a shell script for handling dependencies.
+
 │ └── entrypoint.sh
+
 │
+
 ├── docker-compose.yml # Configuration file for Docker containers.
+
 ├── Dockerfile # Dockerfile for building containers.
+
 ├── requirements.txt # Lists the project dependencies.
+
 ├── .venv # Environment variables file.
 └── .gitignore # Specifies intentionally untracked files to be ignored by Git.
+
 ├── Real-time streaming data architecture.png # Diagram illustrating real-time streaming data architecture.
+
 └── README.md # Project README providing an overview and instructions.
 
 
