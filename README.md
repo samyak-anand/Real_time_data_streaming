@@ -47,6 +47,10 @@ Real-Time_Data_Streaming_Project/
 
 └── README.md # Project README providing an overview and instructions.
 
+## Clone Repository: 
+To clone this repository, open terminal, type the following command:
+```bash
+git clone 
 
 
 ## Introduction:
