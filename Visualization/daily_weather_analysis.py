@@ -1,4 +1,10 @@
-# analysis.py
+"""
+spark_connect: Initializes and returns a Spark session.
+read_from_cassandra: Reads data from Cassandra into a Pandas DataFrame.
+perform_analysis: Calculates and prints error metrics (MSE and MAE) for the temperature data.
+plot_results: Plots the temperature data over time using Seaborn.
+"""
+
 import logging
 import pandas as pd
 from cassandra.cluster import Cluster
