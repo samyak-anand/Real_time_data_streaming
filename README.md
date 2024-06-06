@@ -49,9 +49,9 @@ Real-Time_Data_Streaming_Project/
 
 ## Clone Repository: 
 To clone this repository, open terminal, type the following command:
-      ```bash
-      git clone https://github.com/samyak-anand/Real_time_data_streaming.git
-      ```
+```bash
+git clone https://github.com/samyak-anand/Real_time_data_streaming.git
+```
 ## Navigate to Project Directory:
 Change directory to Real_time_data_streaming, by using the following command.
       ```bash
