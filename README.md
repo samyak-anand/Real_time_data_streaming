@@ -3,11 +3,15 @@
 ## Overview:
 
 This project aims to demonstrate real-time data streaming using Apache Kafka and Apache Spark. It includes components for generating sample data, producing it to Kafka, and processing it using Spark Streaming. Docker is utilized for containerization, making deployment easier across different environments.
+## Real-time streaming data architecture:
 
 ## Directory:
 Real-time_data_streaming
 
-## Real-time streaming data architecture:
+![Real-time streaming data architecture](https://github.com/samyak-anand/Real_time_data_streaming/assets/107413662/cc867f03-4a85-4d08-ad52-9e4dfe910a33)
+
+
+
 │
 
 ├── dags/ # Contains Python scripts for data generation(historic_main.py), Kafka producing(main_py), logging configuration(utils.py),Spark streaming(spark_stream_daily.py and spark_stream_hourly.py).
@@ -68,7 +72,10 @@ daily = Variable.get("daily", default_var="weather_code")
 start_date = Variable.get("start_date", "2024-04-01")
 end_date = Variable.get("end_date", "2024-05-28")
 ```
+
+
 ## Data Structure
+
 Parameter	Data Type 	Description
 latitude	Float	Geographical WGS84 coordinates of the location. Multiple coordinates can be comma separated. E.g. &latitude=52.52,48.85&longitude=13.41,2.35. To return data for multiple locations the JSON output changes to a list of structures. CSV and XLSX formats add a column location_id.
 longitude	Float	
@@ -81,7 +88,7 @@ apparent_temperature	Float	Apparent temperature is the perceived feels-like temp
 surface_pressure	Float	Atmospheric air pressure reduced to mean sea level (msl) or pressure at surface. Typically pressure on mean sea level is used in meteorology. Surface pressure gets lower with increasing elevation.
 precipitation	Float	Total precipitation (rain, showers, snow) sum of the preceding hour. Data is stored with a 0.1 mm precision. If precipitation data is summed up to monthly sums, there might be small inconsistencies with the total precipitation amount.
 rain	Float	Only liquid precipitation of the preceding hour including local showers and rain from large scale systems.
-![image](https://github.com/samyak-anand/Real_time_data_streaming/assets/107413662/de7f6088-c7e7-4ec2-a6eb-f69e7ba1878f)
+![image](https://github.com/samyak-anand/Real_time_data_streaming/assets/107413662/05961dc1-7389-450b-a1b9-45df4d52f109)
 
 
 ## Clone Repository: 
