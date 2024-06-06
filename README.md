@@ -1,6 +1,6 @@
 **#Overview:**
 
-# Data Streaming Pipeline
+**# Data Streaming Pipeline:**
 
 Real-Time_Data_Streaming_Project/
 
@@ -45,11 +45,11 @@ Real-Time_Data_Streaming_Project/
 
 
 
-## Introduction
+**## Introduction:**
 This is a data processing pipeline which ingests data (weather data) from an endpoint and drops it in Apache Kafka. Then Apache Spark is used to process the data and stored in Apache Cassandra. The entire pipeline is orchestrated using Apache Airflow with the help of Kafka and Spark providers. Due to the fact that data is available in hourly and daily batches, rather than building a streaming pipeline, this is a batch processing pipeline. This solution can also be used for streaming in which case the batch processing in Spark is tweaked to satisfy the streaming solution but the spark triggers have to be handled in a custom fashion. 
 The design of tasks in a DAG is that upstream tasks fully execute successfully before a downstream task executes. That dependency nature does not make it suitable to orchestrate an entire streaming pipeline since in a streaming pipeline, all tasks are running continuously.
 
-## Description
+**## Description:**
 * The Project depends on Airflow for Orchestrating and scheduling. 
 * Using python to make the requests to the endpoint to get hourly and daily data metrics. 
 * By the help of a kafka provider in Airflow (confluent-kafka), data is produced to the suitable kafka topic using the `ProduceToTopicOperator` 
@@ -57,7 +57,7 @@ The design of tasks in a DAG is that upstream tasks fully execute successfully b
 * The same Apache Spark job (written in PySpark) connects to write the consumed data into a Cassandra Database
 
 
-## Running the code (either locally or on a remote system)
+**## Running the code (either locally or on a remote system):**
 * Clone the repository
 * You need the various dependencies to run the code. Since the entire architecture is running on docker compose, make sure to install docker and docker compose on your system. 
 * Depending on your system resources available to you, check the resource allocations in the `docker-compose.yml` file and the spark jobs in the `dags` directory to adjust accordingly
@@ -70,7 +70,7 @@ The design of tasks in a DAG is that upstream tasks fully execute successfully b
     * The `CASSANDRA_KEYSPACE` is the keyspace for the Cassandra database
     * The `AIRFLOW_UID` is the user ID for Airflow. From the Airflow docs, this is from Linux system user so it uses the `50000` as the default for the airflow user.
     * The `EC2_PUBLIC_DNS` is the IP variable for Kafka in case you run the solution on a remote system and want to expose kafka to outside connectivity. 
-
+This project aims to demonstrate real-time data streaming using Apache Kafka and Apache Spark. It includes components for generating sample data, producing it to Kafka, and processing it using Spark Streaming. Docker is utilized for containerization, making deployment easier across different environments.
 ```bash
 BASE_URL=https://{api.open-meteo.com}/v1/dwd-icon
 _PIP_ADDITIONAL_REQUIREMENTS=apache-airflow-providers-postgres requests apache-airflow-providers-apache-spark
@@ -100,7 +100,7 @@ EC2_PUBLIC_DNS=localhost
 * You can now manually trigger the execution of any of the dags. 
 * NB: The `start_date` and `end_date` are configured to be used only by the historic run. The main DAG uses the default current day. 
 
-### POST DAG Execution
+**### POST DAG Execution:**
 * After the pipeline successfully executes, you can connect to the cassandra database in the docker environment using the command below. Run the CQLSH commands (similar to SQL which can be found in the Cassandra docs) to explore the data
 
 ```bash
@@ -108,7 +108,7 @@ sudo docker compose exec -it cassandra_db cqlsh -u cassandra -p cassandra localh
 ```
 
 
-## Tools
+**## Tools:**
 * Apache Ariflow
 * Cassandra
 * Apache Spark
