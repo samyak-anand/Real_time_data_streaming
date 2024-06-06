@@ -4,10 +4,15 @@
 
 This project aims to demonstrate real-time data streaming using Apache Kafka and Apache Spark. It includes components for generating sample data, producing it to Kafka, and processing it using Spark Streaming. Docker is utilized for containerization, making deployment easier across different environments.
 
+## Real-time streaming data architecture:
+![Real-time streaming data architecture](https://github.com/samyak-anand/Real_time_data_streaming/assets/107413662/cc867f03-4a85-4d08-ad52-9e4dfe910a33)
+
+There is minor changes in architecture. Instead of uploading data for [.csv] file, we are directly fetching data form api 
+
 ## Directory:
 Real-time_data_streaming
 
-## Real-time streaming data architecture:
+
 │
 
 ├── dags/ # Contains Python scripts for data generation(historic_main.py), Kafka producing(main_py), logging configuration(utils.py),Spark streaming(spark_stream_daily.py and spark_stream_hourly.py).
@@ -47,6 +52,47 @@ Real-time_data_streaming
 
 └── README.md # Project README providing an overview and instructions.
 
+
+## Data Source: 
+We are fetching data from api. For weather analysis we opted open-metro.com api where we can get historical data. Open-Meteo partners with national weather services to bring you open data with high resolution, ranging from 1 to 11 kilometers. Our powerful APIs intelligently select the most suitable weather models for your specific location, ensuring accurate and reliable forecasts. The Historical Weather API is based on reanalysis datasets and uses a combination of weather station, aircraft, buoy, radar, and satellite observations to create a comprehensive record of past weather conditions. These datasets are able to fill in gaps by using mathematical models to estimate the values of various weather variables. As a result, reanalysis datasets are able to provide detailed historical weather information for locations that may not have had weather stations nearby, such as rural areas or the open ocean.
+
+```bash
+# Environmental Variables
+base_url = os.environ.get("BASE_URL", "https://api.open-meteo.com/v1/dwd-icon")
+daily_topic = os.environ.get("DAILY_DATA_TOPIC", "dailymetrics")
+hourly_topic = os.environ.get("HOURLY_DATA_TOPIC", "hourlymetrics")
+
+# Airflow Variables for historic data
+latitudes = Variable.get("latitudes", default_var="52.5244,52.3471,53.5507,48.1374,50.1155")
+longitudes = Variable.get("longitudes", default_var="13.4105,14.5506,9.993,11.5755,8.6842")
+hourly = Variable.get(
+    "hourly", default_var="temperature_2m,relative_humidity_2m,dew_point_2m,apparent_temperature,precipitation,rain,surface_pressure,temperature_80m")
+daily = Variable.get("daily", default_var="weather_code")
+
+# Date Range variables
+start_date = Variable.get("start_date", "2024-04-01")
+end_date = Variable.get("end_date", "2024-05-28")
+```
+
+
+## Data Structure
+
+Parameter	Data Type 	Description
+latitude	Float	Geographical WGS84 coordinates of the location. Multiple coordinates can be comma separated. E.g. &latitude=52.52,48.85&longitude=13.41,2.35. To return data for multiple locations the JSON output changes to a list of structures. CSV and XLSX formats add a column location_id.
+longitude	Float	
+start_date	DateTime	The time interval to get weather data. A day must be specified as an ISO8601 date (e.g. 2022-12-31).
+end_date	DateTime	The time interval to get weather data. A day must be specified as an ISO8601 date (e.g. 2022-12-31).
+temperature_2m	Float	Air temperature at 2 meters above ground
+relative_humidity_2m	Float	Relative humidity at 2 meters above ground
+dew_point_2m	Float	Dew point temperature at 2 meters above ground
+apparent_temperature	Float	Apparent temperature is the perceived feels-like temperature combining wind chill factor, relative humidity and solar radiation
+surface_pressure	Float	Atmospheric air pressure reduced to mean sea level (msl) or pressure at surface. Typically pressure on mean sea level is used in meteorology. Surface pressure gets lower with increasing elevation.
+precipitation	Float	Total precipitation (rain, showers, snow) sum of the preceding hour. Data is stored with a 0.1 mm precision. If precipitation data is summed up to monthly sums, there might be small inconsistencies with the total precipitation amount.
+rain	Float	Only liquid precipitation of the preceding hour including local showers and rain from large scale systems.
+
+![image](https://github.com/samyak-anand/Real_time_data_streaming/assets/107413662/05961dc1-7389-450b-a1b9-45df4d52f109)
+
+
 ## Clone Repository: 
 To clone this repository, open terminal, type the following command:
 ```bash
@@ -69,6 +115,9 @@ verify the start_date and end_date in [utils.py](dags/utils.py)  file present in
 start_date = Variable.get("start_date", "2024-01-01")
 end_date = Variable.get("end_date", "2024-05-28")
 ```
+## Visualization:
+This is use for analysis of data once the data is completly loaded in Cassandra databse. Here we are analysing data hourly and daily sepreatly. 
+
 
 ## Introduction:
 This is a data processing pipeline which ingests data (weather data) from an endpoint and drops it in Apache Kafka. Then Apache Spark is used to process the data and stored in Apache Cassandra. The entire pipeline is orchestrated using Apache Airflow with the help of Kafka and Spark providers. Due to the fact that data is available in hourly and daily batches, rather than building a streaming pipeline, this is a batch processing pipeline. This solution can also be used for streaming in which case the batch processing in Spark is tweaked to satisfy the streaming solution but the spark triggers have to be handled in a custom fashion. 
