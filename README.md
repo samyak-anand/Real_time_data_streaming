@@ -4,6 +4,18 @@
 
 This project aims to demonstrate real-time data streaming using Apache Kafka and Apache Spark. It includes components for generating sample data, producing it to Kafka, and processing it using Spark Streaming. Docker is utilized for containerization, making deployment easier across different environments.
 
+## Introduction:
+This is a data processing pipeline which ingests data (weather data) from an endpoint and drops it in Apache Kafka. Then Apache Spark is used to process the data and stored in Apache Cassandra. The entire pipeline is orchestrated using Apache Airflow with the help of Kafka and Spark providers. Due to the fact that data is available in hourly and daily batches, rather than building a streaming pipeline, this is a batch processing pipeline. This solution can also be used for streaming in which case the batch processing in Spark is tweaked to satisfy the streaming solution but the spark triggers have to be handled in a custom fashion. 
+The design of tasks in a DAG is that upstream tasks fully execute successfully before a downstream task executes. That dependency nature does not make it suitable to orchestrate an entire streaming pipeline since in a streaming pipeline, all tasks are running continuously.
+
+## Description:
+* The Project depends on Airflow for Orchestrating and scheduling. 
+* Using python to make the requests to the endpoint to get hourly and daily data metrics. 
+* By the help of a kafka provider in Airflow (confluent-kafka), data is produced to the suitable kafka topic using the `ProduceToTopicOperator` 
+* The data is then consumed with a spark job by the help of the `SparkSubmitOperator` in the Spark provider in Apache Airflow
+* The same Apache Spark job (written in PySpark) connects to write the consumed data into a Cassandra Database
+
+
 ## Real-time streaming data architecture:
 ![Real-time streaming data architecture](https://github.com/samyak-anand/Real_time_data_streaming/assets/107413662/cc867f03-4a85-4d08-ad52-9e4dfe910a33)
 
@@ -52,7 +64,6 @@ Real-time_data_streaming
 
 └── README.md # Project README providing an overview and instructions.
 
-
 ## Data Source: 
 We are fetching data from api. For weather analysis we opted open-metro.com api where we can get historical data. Open-Meteo partners with national weather services to bring you open data with high resolution, ranging from 1 to 11 kilometers. Our powerful APIs intelligently select the most suitable weather models for your specific location, ensuring accurate and reliable forecasts. The Historical Weather API is based on reanalysis datasets and uses a combination of weather station, aircraft, buoy, radar, and satellite observations to create a comprehensive record of past weather conditions. These datasets are able to fill in gaps by using mathematical models to estimate the values of various weather variables. As a result, reanalysis datasets are able to provide detailed historical weather information for locations that may not have had weather stations nearby, such as rural areas or the open ocean.
 
@@ -75,7 +86,6 @@ start_date = Variable.get("start_date", "2024-04-01")
 end_date = Variable.get("end_date", "2024-05-28")
 ```
 
-
 ## Data Structure
 
 Parameter	Data Type 	Description
@@ -92,7 +102,6 @@ precipitation	Float	Total precipitation (rain, showers, snow) sum of the precedi
 rain	Float	Only liquid precipitation of the preceding hour including local showers and rain from large scale systems.
 
 ![image](https://github.com/samyak-anand/Real_time_data_streaming/assets/107413662/05961dc1-7389-450b-a1b9-45df4d52f109)
-
 
 ## Clone Repository: 
 To clone this repository, open terminal, type the following command:
@@ -119,18 +128,12 @@ end_date = Variable.get("end_date", "2024-05-28")
 ## Visualization:
 This is use for analysis of data once the data is completly loaded in Cassandra databse. Here we are analysing data hourly and daily sepreatly. 
 
+##  Verify the image: 
 
-## Introduction:
-This is a data processing pipeline which ingests data (weather data) from an endpoint and drops it in Apache Kafka. Then Apache Spark is used to process the data and stored in Apache Cassandra. The entire pipeline is orchestrated using Apache Airflow with the help of Kafka and Spark providers. Due to the fact that data is available in hourly and daily batches, rather than building a streaming pipeline, this is a batch processing pipeline. This solution can also be used for streaming in which case the batch processing in Spark is tweaked to satisfy the streaming solution but the spark triggers have to be handled in a custom fashion. 
-The design of tasks in a DAG is that upstream tasks fully execute successfully before a downstream task executes. That dependency nature does not make it suitable to orchestrate an entire streaming pipeline since in a streaming pipeline, all tasks are running continuously.
-
-## Description:
-* The Project depends on Airflow for Orchestrating and scheduling. 
-* Using python to make the requests to the endpoint to get hourly and daily data metrics. 
-* By the help of a kafka provider in Airflow (confluent-kafka), data is produced to the suitable kafka topic using the `ProduceToTopicOperator` 
-* The data is then consumed with a spark job by the help of the `SparkSubmitOperator` in the Spark provider in Apache Airflow
-* The same Apache Spark job (written in PySpark) connects to write the consumed data into a Cassandra Database
-
+To verify the docker image use the command 
+```bash
+sudo docker images
+```
 
 ## Running the code (either locally or on a remote system):
 * Clone the repository
@@ -157,10 +160,14 @@ CASSANDRA_KEYSPACE=analytics
 AIRFLOW_UID=50000
 EC2_PUBLIC_DNS=localhost
 ```
+
+
 * After setting the environmental variables, we are ready to run the code. I have included the list of commands in the [startup](startup.sh) file The commands before the `docker-compose up -d` are based on the `Ubuntu` Distribution of the Linux system. In case you are using a different Distribution, you can adjust accordingly. Command
 ```bash
     sh startup.sh
 ```
+
+
 * The above command will trigger the start of the program. 
 * In case you wish to see the logs, you can edit the startup script and remove the detach option from the `docker-compose up -d` command to have `docker-compose up`. 
 * Wait for the application to fully start and visit the Airflow web App on `http://{HOST-IP_ADDRESS}:8080`.
@@ -181,7 +188,6 @@ EC2_PUBLIC_DNS=localhost
 ```bash
 sudo docker compose exec -it cassandra_db cqlsh -u cassandra -p cassandra localhost 9042
 ```
-
 
 ## Tools:
 * Apache Ariflow
