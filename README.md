@@ -49,9 +49,14 @@ Real-Time_Data_Streaming_Project/
 
 ## Clone Repository: 
 To clone this repository, open terminal, type the following command:
-```bash
-git clone 
-
+      ```bash
+      git clone https://github.com/samyak-anand/Real_time_data_streaming.git
+      ```
+## Navigate to Project Directory:
+Change directory to Real_time_data_streaming, by using the following command.
+      ```bash
+      cd Real_time_data_streaming
+      ```
 
 ## Introduction:
 This is a data processing pipeline which ingests data (weather data) from an endpoint and drops it in Apache Kafka. Then Apache Spark is used to process the data and stored in Apache Cassandra. The entire pipeline is orchestrated using Apache Airflow with the help of Kafka and Spark providers. Due to the fact that data is available in hourly and daily batches, rather than building a streaming pipeline, this is a batch processing pipeline. This solution can also be used for streaming in which case the batch processing in Spark is tweaked to satisfy the streaming solution but the spark triggers have to be handled in a custom fashion. 
