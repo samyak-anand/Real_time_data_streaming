@@ -40,7 +40,7 @@ with DAG(
     "historic_weather_data_dag",
     default_args=default_args,
     description="Historical Weather metrics data streaming",
-    schedule_interval=None,
+    schedule=None,
 ) as historic_weather_data_dag:
 
     @task

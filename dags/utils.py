@@ -32,7 +32,7 @@ hourly = Variable.get(
 daily = Variable.get("daily", default_var="weather_code")
 
 # Date Range variables
-start_date = Variable.get("start_date", "2024-01-01")
+start_date = Variable.get("start_date", "2024-04-01")
 end_date = Variable.get("end_date", "2024-05-28")
 
 

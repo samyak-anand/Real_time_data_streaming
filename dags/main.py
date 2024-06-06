@@ -48,7 +48,7 @@ with DAG(
     "weather_data_dag",
     default_args=default_args,
     description="Weather metrics data streaming",
-    schedule_interval="@daily",
+    schedule="@daily",
 ) as weather_data_dag:
 
     @task
