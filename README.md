@@ -60,7 +60,7 @@ cd Real_time_data_streaming
 ```
 
 ## Set Environment Variables:
-Ensure that necessary environment variables are configured in the .env file.
+Ensure that necessary environment variables are configured in the .venv file.
 
 ## Verify the Date:
 verify the start_date and end_date in [utils.py](dags/utils.py)  file present in dags folder, define under #Data Range Variables
