@@ -47,6 +47,29 @@ Real-time_data_streaming
 
 └── README.md # Project README providing an overview and instructions.
 
+
+## Data Source: 
+We are fetching data from api. For weather analysis we opted open-metro.com api where we can get historical data. Open-Meteo partners with national weather services to bring you open data with high resolution, ranging from 1 to 11 kilometers. Our powerful APIs intelligently select the most suitable weather models for your specific location, ensuring accurate and reliable forecasts. The Historical Weather API is based on reanalysis datasets and uses a combination of weather station, aircraft, buoy, radar, and satellite observations to create a comprehensive record of past weather conditions. These datasets are able to fill in gaps by using mathematical models to estimate the values of various weather variables. As a result, reanalysis datasets are able to provide detailed historical weather information for locations that may not have had weather stations nearby, such as rural areas or the open ocean.
+
+```bash
+# Environmental Variables
+base_url = os.environ.get("BASE_URL", "https://api.open-meteo.com/v1/dwd-icon")
+daily_topic = os.environ.get("DAILY_DATA_TOPIC", "dailymetrics")
+hourly_topic = os.environ.get("HOURLY_DATA_TOPIC", "hourlymetrics")
+
+# Airflow Variables for historic data
+latitudes = Variable.get("latitudes", default_var="52.5244,52.3471,53.5507,48.1374,50.1155")
+longitudes = Variable.get("longitudes", default_var="13.4105,14.5506,9.993,11.5755,8.6842")
+hourly = Variable.get(
+    "hourly", default_var="temperature_2m,relative_humidity_2m,dew_point_2m,apparent_temperature,precipitation,rain,surface_pressure,temperature_80m")
+daily = Variable.get("daily", default_var="weather_code")
+
+# Date Range variables
+start_date = Variable.get("start_date", "2024-04-01")
+end_date = Variable.get("end_date", "2024-05-28")
+```
+
+
 ## Clone Repository: 
 To clone this repository, open terminal, type the following command:
 ```bash
@@ -69,6 +92,9 @@ verify the start_date and end_date in [utils.py](dags/utils.py)  file present in
 start_date = Variable.get("start_date", "2024-01-01")
 end_date = Variable.get("end_date", "2024-05-28")
 ```
+## Visualization:
+This is use for analysis of data once the data is completly loaded in Cassandra databse. Here we are analysing data hourly and daily sepreatly. 
+
 
 ## Introduction:
 This is a data processing pipeline which ingests data (weather data) from an endpoint and drops it in Apache Kafka. Then Apache Spark is used to process the data and stored in Apache Cassandra. The entire pipeline is orchestrated using Apache Airflow with the help of Kafka and Spark providers. Due to the fact that data is available in hourly and daily batches, rather than building a streaming pipeline, this is a batch processing pipeline. This solution can also be used for streaming in which case the batch processing in Spark is tweaked to satisfy the streaming solution but the spark triggers have to be handled in a custom fashion. 
