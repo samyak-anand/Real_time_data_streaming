@@ -66,7 +66,8 @@ hourly_topic = os.environ.get("HOURLY_DATA_TOPIC", "hourlymetrics")
 latitudes = Variable.get("latitudes", default_var="52.5244,52.3471,53.5507,48.1374,50.1155")
 longitudes = Variable.get("longitudes", default_var="13.4105,14.5506,9.993,11.5755,8.6842")
 hourly = Variable.get(
-    "hourly", default_var="temperature_2m,relative_humidity_2m,dew_point_2m,apparent_temperature,precipitation,rain,surface_pressure,temperature_80m")
+    "hourly", default_var="temperature_2m,relative_humidity_2m,dew_point_2m,apparent_temperature,precipitation,
+                            rain,surface_pressure,temperature_80m")
 daily = Variable.get("daily", default_var="weather_code")
 
 # Date Range variables
