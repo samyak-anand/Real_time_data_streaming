@@ -141,3 +141,5 @@ sudo docker compose exec -it cassandra_db cqlsh -u cassandra -p cassandra localh
 * PostgreSQL
 * Confluent Schema Registry
 
+## Contact:
+www.linkedin.com/in/samyak-anand-496a1143
