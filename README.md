@@ -1,5 +1,47 @@
 # Data Streaming Pipeline
 
+Real-Time_Data_Streaming_Project/
+
+│
+
+├──> app/ # Contains Python scripts for data generation, Kafka producing, logging configuration, and Spark streaming.
+
+│ ├──> data_generator.py # Python script for generating sample data.
+
+│ ├──> kafka_producer.py # Python script for producing data to Kafka.
+
+│ ├──> logging_config.py # Configuration file for logging.
+
+│ └──> spark_streaming.py # Python script for processing data using Spark Streaming.
+
+│
+
+├── data/ # Holds the sample transaction data in CSV format.
+
+│ └── transactions_data.csv
+
+│
+
+├── scripts/ # Includes a shell script for handling dependencies.
+
+│ └── wait-for-it.sh
+
+│
+
+├── docker-compose.yml # Configuration file for Docker containers.
+
+├── Dockerfile # Dockerfile for building containers.
+
+├── requirements.txt # Lists the project dependencies.
+
+├── .env # Environment variables file.
+
+└── .gitignore # Specifies intentionally untracked files to be ignored by Git.
+
+├── Real-time streaming data architecture.png # Diagram illustrating real-time streaming data architecture.
+
+└── README.md # Project README providing an overview and instructions.
+
 ## Introduction
 This is a data processing pipeline which ingests data (weather data) from an endpoint and drops it in Apache Kafka. Then Apache Spark is used to process the data and stored in Apache Cassandra. The entire pipeline is orchestrated using Apache Airflow with the help of Kafka and Spark providers. Due to the fact that data is available in hourly and daily batches, rather than building a streaming pipeline, this is a batch processing pipeline. This solution can also be used for streaming in which case the batch processing in Spark is tweaked to satisfy the streaming solution but the spark triggers have to be handled in a custom fashion. 
 The design of tasks in a DAG is that upstream tasks fully execute successfully before a downstream task executes. That dependency nature does not make it suitable to orchestrate an entire streaming pipeline since in a streaming pipeline, all tasks are running continuously.
