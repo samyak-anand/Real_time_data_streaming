@@ -3,13 +3,14 @@
 ## Overview:
 
 This project aims to demonstrate real-time data streaming using Apache Kafka and Apache Spark. It includes components for generating sample data, producing it to Kafka, and processing it using Spark Streaming. Docker is utilized for containerization, making deployment easier across different environments.
+
 ## Real-time streaming data architecture:
+![Real-time streaming data architecture](https://github.com/samyak-anand/Real_time_data_streaming/assets/107413662/cc867f03-4a85-4d08-ad52-9e4dfe910a33)
+
+There is minor changes in architecture. Instead of uploading data for [.csv] file, we are directly fetching data form api 
 
 ## Directory:
 Real-time_data_streaming
-
-![Real-time streaming data architecture](https://github.com/samyak-anand/Real_time_data_streaming/assets/107413662/cc867f03-4a85-4d08-ad52-9e4dfe910a33)
-
 
 
 │
@@ -88,6 +89,7 @@ apparent_temperature	Float	Apparent temperature is the perceived feels-like temp
 surface_pressure	Float	Atmospheric air pressure reduced to mean sea level (msl) or pressure at surface. Typically pressure on mean sea level is used in meteorology. Surface pressure gets lower with increasing elevation.
 precipitation	Float	Total precipitation (rain, showers, snow) sum of the preceding hour. Data is stored with a 0.1 mm precision. If precipitation data is summed up to monthly sums, there might be small inconsistencies with the total precipitation amount.
 rain	Float	Only liquid precipitation of the preceding hour including local showers and rain from large scale systems.
+
 ![image](https://github.com/samyak-anand/Real_time_data_streaming/assets/107413662/05961dc1-7389-450b-a1b9-45df4d52f109)
 
 
