@@ -1,12 +1,13 @@
 # Data Streaming Pipeline:
 
-## Overview
+## Overview:
 
 This project aims to demonstrate real-time data streaming using Apache Kafka and Apache Spark. It includes components for generating sample data, producing it to Kafka, and processing it using Spark Streaming. Docker is utilized for containerization, making deployment easier across different environments.
 
-## Directory
+## Directory:
 Real-Time_Data_Streaming_Project/
 
+## Real-time streaming data architecture:
 │
 
 ├── dags/ # Contains Python scripts for data generation(historic_main.py), Kafka producing(main_py), logging configuration(utils.py),Spark streaming(spark_stream_daily.py and spark_stream_hourly.py).
