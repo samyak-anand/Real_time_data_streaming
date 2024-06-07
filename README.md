@@ -229,25 +229,25 @@ sudo docker compose exec -it cassandra_db cqlsh -u cassandra -p cassandra localh
     Third-Party APIs: Enrich datasets by integrating with other weather services.
     IoT Integration: Collect data from IoT devices and sensors.
 
-### Security and Compliance
+##### Security and Compliance
 
-    Data Encryption: Protect data in transit and at rest.
-    Access Controls: Implement fine-grained access controls and authentication.
+* Data Encryption: Protect data in transit and at rest.
+* Access Controls: Implement fine-grained access controls and authentication.
 
-### Cloud Deployment
+##### Cloud Deployment
 
-    Multi-Cloud Support: Ensure reliability by supporting multiple cloud environments.
-    Serverless Architectures: Reduce operational overhead with serverless solutions.
+* Multi-Cloud Support: Ensure reliability by supporting multiple cloud environments.
+* Serverless Architectures: Reduce operational overhead with serverless solutions.
 
-#### Automated Testing and CI/CD
+##### Automated Testing and CI/CD
 
-CI/CD Pipelines: Automate testing, deployment, and monitoring using tools like Jenkins or GitHub Actions.
-Automated Testing: Implement comprehensive testing frameworks.
+* CI/CD Pipelines: Automate testing, deployment, and monitoring using tools like Jenkins or GitHub Actions.
+* Automated Testing: Implement comprehensive testing frameworks.
 
-#### Documentation and Training
+##### Documentation and Training
 
-Comprehensive Documentation: Provide detailed setup guides, troubleshooting manuals, and user guides.
-Training and Workshops: Educate users and developers on system usage.
+* Comprehensive Documentation: Provide detailed setup guides, troubleshooting manuals, and user guides.
+* Training and Workshops: Educate users and developers on system usage.
 
 
 ## Contact:
