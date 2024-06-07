@@ -145,6 +145,8 @@ def create_table(session):
     print("Table created successfully!")
 
 
+
+
 if __name__ == "__main__":
     cassandra_conn = create_cassandra_connection()
     if cassandra_conn:
