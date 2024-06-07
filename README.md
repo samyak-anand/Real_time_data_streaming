@@ -198,36 +198,36 @@ sudo docker compose exec -it cassandra_db cqlsh -u cassandra -p cassandra localh
 * Confluent Schema Registry
 
 ## Future Scope of the Real-Time Data Streaming Project
-### Advanced Data Analytics and Machine Learning
+##### Advanced Data Analytics and Machine Learning
 
-    Predictive Analytics: Implement machine learning models for weather forecasting.
-    Anomaly Detection: Use algorithms to identify extreme weather conditions.
-    Automated Model Retraining: Regularly update ML models with new data.
+* Predictive Analytics: Implement machine learning models for weather forecasting.
+* Anomaly Detection: Use algorithms to identify extreme weather conditions.
+* Automated Model Retraining: Regularly update ML models with new data.
 
-### Enhanced Real-Time Processing
+##### Enhanced Real-Time Processing
 
-    Event-Driven Processing: Integrate tools like Apache Flink for advanced event processing.
-    Stream Aggregations: Perform sophisticated aggregations and windowed operations on streaming data.
+* Event-Driven Processing: Integrate tools like Apache Flink for advanced event processing.
+* Stream Aggregations: Perform sophisticated aggregations and windowed operations on streaming data.
 
-### Scalability and Performance
+##### Scalability and Performance
 
-    Horizontal Scaling: Expand Kafka, Spark, and Cassandra clusters to handle more data.
-    Performance Optimization: Monitor and optimize each component’s performance using tools like Prometheus and Grafana.
+* Horizontal Scaling: Expand Kafka, Spark, and Cassandra clusters to handle more data.
+* Performance Optimization: Monitor and optimize each component’s performance using tools like Prometheus and Grafana.
 
-### Data Quality and Governance
+##### Data Quality and Governance
 
-    Data Quality Checks: Validate data at various stages for accuracy and reliability.
-    Data Lineage and Auditing: Track data flow and changes using tools like Apache Atlas.
+Data Quality Checks: Validate data at various stages for accuracy and reliability.
+Data Lineage and Auditing: Track data flow and changes using tools like Apache Atlas.
 
-### User Interface and Visualization
+##### User Interface and Visualization
 
-    Real-Time Dashboards: Use tools like Apache Superset or Grafana for live data visualization.
-    Custom Reports: Allow users to create personalized reports.
+* Real-Time Dashboards: Use tools like Apache Superset or Grafana for live data visualization.
+* Custom Reports: Allow users to create personalized reports.
 
-### Integration with External Systems
+##### Integration with External Systems
 
-    Third-Party APIs: Enrich datasets by integrating with other weather services.
-    IoT Integration: Collect data from IoT devices and sensors.
+* Third-Party APIs: Enrich datasets by integrating with other weather services.
+* IoT Integration: Collect data from IoT devices and sensors.
 
 ##### Security and Compliance
 
