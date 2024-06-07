@@ -47,6 +47,7 @@ sample_schema = (
     .add("precipitation", DecimalType(scale=4))
 )
 
+
 # Convert schema to array due to structure of data being produced in Kafka
 # Use the sample_schema (StructType) if it's a single json data
 array_schema = ArrayType(sample_schema)
