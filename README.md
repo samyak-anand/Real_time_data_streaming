@@ -239,15 +239,15 @@ sudo docker compose exec -it cassandra_db cqlsh -u cassandra -p cassandra localh
     Multi-Cloud Support: Ensure reliability by supporting multiple cloud environments.
     Serverless Architectures: Reduce operational overhead with serverless solutions.
 
-### Automated Testing and CI/CD
+#### Automated Testing and CI/CD
 
-    CI/CD Pipelines: Automate testing, deployment, and monitoring using tools like Jenkins or GitHub Actions.
-    Automated Testing: Implement comprehensive testing frameworks.
+CI/CD Pipelines: Automate testing, deployment, and monitoring using tools like Jenkins or GitHub Actions.
+Automated Testing: Implement comprehensive testing frameworks.
 
-### Documentation and Training
+#### Documentation and Training
 
-    Comprehensive Documentation: Provide detailed setup guides, troubleshooting manuals, and user guides.
-    Training and Workshops: Educate users and developers on system usage.
+Comprehensive Documentation: Provide detailed setup guides, troubleshooting manuals, and user guides.
+Training and Workshops: Educate users and developers on system usage.
 
 
 ## Contact:
